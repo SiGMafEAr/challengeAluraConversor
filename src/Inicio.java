@@ -9,9 +9,9 @@ public class Inicio {
         ServicioConversion servicio = new ServicioConversion();
         int seleccion = 0;
 
-        while (seleccion != 7) {
-            System.out.println("-------------------------------------------\n");
-            System.out.println("Bienvenido al convertidor de divisas");
+        while (seleccion != 9) {
+            System.out.println("\n****************************************");
+            System.out.println("  Bienvenido al convertidor de divisas");
             System.out.println("1) USD a MXN");
             System.out.println("2) MXN a USD");
             System.out.println("3) EUR a MXN");
@@ -21,12 +21,11 @@ public class Inicio {
             System.out.println("7) AUD a MXN");
             System.out.println("8) CAD a MXN");
             System.out.println("9) Salir");
-            System.out.println(" Elija una opción válida \n");
-            System.out.println("\n");
+            System.out.println("\nElija una opción válida: ");
 
             try {
                 seleccion = entrada.nextInt();
-                entrada.nextLine(); // Limpiar el buffer del scanner
+                entrada.nextLine();
 
                 switch (seleccion) {
                     case 1:
@@ -54,21 +53,21 @@ public class Inicio {
                         Convertidor.convertir("CAD", "MXN", servicio, entrada);
                         break;
                     case 9:
-                        System.out.println("Cerrando el programa...");
+                        System.out.println("Saliendo...");
                         break;
                     default:
-                        System.out.println("Por favor, ingrese una opción válida (1-7)");
+                        System.out.println("Ingrese una opción válida (1-7)");
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Por favor, ingrese un número entero.");
-                entrada.next(); // Limpiar el buffer del scanner
-                seleccion = 0; // Restablecer la opción para evitar un bucle infinito
+                System.out.println("Solo se aceptan numeros del 1 al 9.");
+                entrada.next();
+                seleccion = 0;
             } catch (Exception e) {
                 System.out.println("Opción no válida");
                 break;
             }
         }
-        entrada.close(); // Cerrar el scanner al finalizar
+        entrada.close();
     }
 }

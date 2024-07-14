@@ -23,19 +23,19 @@ se hace uso de la API de https://www.exchangerate-api.com/ para obtener las tasa
 
 Clona el repositorio:
 
-    ```sh
+    ```
     git clone https://github.com/tu-usuario/tu-repositorio.git
     cd tu-repositorio
     ```
 Tener el archivo `gson-2.11.0.jar` en la carpeta `lib`.
 Compila el proyecto:
-    ```sh
+    ```
     javac -cp "lib/gson-2.11.0.jar" -d bin src/*.java
     ```
 
 ## Uso
 Ejecuta el programa:
-    ```sh
+    ```
     java -cp "bin:lib/gson-2.11.0.jar" Inicio
     ```
     Sigue las instrucciones en pantalla para seleccionar la divisa que deseas convertir y proporciona el monto a convertir.

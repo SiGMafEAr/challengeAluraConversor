@@ -11,23 +11,23 @@ public class Convertidor {
         Date fechaActual = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-        TasaCambio tasa = servicio.obtenerTasa(divisaBase, divisaObjetivo);
+        TasaCambio tasa = servicio.getTasa(divisaBase, divisaObjetivo);
 
         if (tasa != null) {
-            System.out.println("La tipo de camio para hoy " + formato.format(fechaActual) +
-                    "\n1 " + divisaBase + " = " + tasa.obtenerTasaConversion() + " " + divisaObjetivo);
+            System.out.println("La tipo de cambio para hoy " + formato.format(fechaActual) +
+                    "\n1 " + divisaBase + " = " + tasa.getTasaConversion() + " " + divisaObjetivo);
 
             try {
-                System.out.println("Ingrese el monto que deseas convertir de " + divisaBase);
+                System.out.println("Ingrese el monto que desea convertir de " + divisaBase);
                 monto = Double.parseDouble(entrada.nextLine());
-                montoConvertido = monto * tasa.obtenerTasaConversion();
+                montoConvertido = monto * tasa.getTasaConversion();
                 System.out.println("El monto " + monto + " " + divisaBase + " El tipo de cambio es de =>> "
                         + montoConvertido + " " + divisaObjetivo);
             } catch (NumberFormatException e) {
                 System.out.println("Por favor, ingrese un número válido.");
             }
         } else {
-            System.out.println("No se pudo obtener la tas cambios para " + divisaBase + " a " + divisaObjetivo);
+            System.out.println("No se pudo obtener la tasa de cambio para " + divisaBase + " a " + divisaObjetivo);
         }
     }
 }

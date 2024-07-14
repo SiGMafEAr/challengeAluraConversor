@@ -7,8 +7,8 @@ import java.net.http.HttpResponse;
 
 public class ServicioConversion {
 
-    public TasaCambio obtenerTasa(String divisaBase, String divisaObjetivo) {
-        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/40803f00e2546baaa64e3151/pair/" + divisaBase
+    public TasaCambio getTasa(String divisaBase, String divisaObjetivo) {
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/3eddedd804a201392f810cff/pair/" + divisaBase
                 + "/" + divisaObjetivo);
 
         HttpClient cliente = HttpClient.newHttpClient();
@@ -18,8 +18,6 @@ public class ServicioConversion {
 
         try {
             HttpResponse<String> respuesta = cliente.send(solicitud, HttpResponse.BodyHandlers.ofString());
-
-            // Verificar si la solicitud fue exitosa
             if (respuesta.statusCode() == 200) {
                 return new Gson().fromJson(respuesta.body(), TasaCambio.class);
             } else {
@@ -27,11 +25,9 @@ public class ServicioConversion {
                 return null;
             }
         } catch (IOException | InterruptedException e) {
-            // Manejar la excepción de manera adecuada
             e.printStackTrace();
             return null;
         } finally {
-            // Cerrar el cliente HttpClient para liberar los recursos
             cliente.close();
         }
     }
